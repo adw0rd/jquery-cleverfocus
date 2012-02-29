@@ -15,3 +15,5 @@ Example javascript:
  $("#search_input").autofocus({
      keypress_limit: 3
  });
+
+When you reach ``keypress_limit``, then it will set the focus to the desired ``input`` and ``input`` will fill the data which you entered
