@@ -13,9 +13,9 @@
         var has_focus = false;
         var input = $(this);
 
-        $('*').focus(function(){
+        $('input, textarea, button, select').focusin(function(){
             has_focus = true;
-        }).blur(function() {
+        }).focusout(function() {
             has_focus = false;
         });
 
@@ -26,11 +26,12 @@
                     keypress_words.push(ch);
                 }
                 if (keypress_words.length >= options.keypress_limit) {
+                    if (jQuery.browser.webkit) {
+                        keypress_words.pop();
+                    }
                     input.focus().val(input.val() + keypress_words.join(''));
+                    keypress_words = [];
                 }
-            } else {
-                // flush words
-                keypress_words = [];
             }
         });
     }
