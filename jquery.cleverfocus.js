@@ -13,7 +13,7 @@
         var has_focus = false;
         var input = $(this);
 
-        input.focus(function(){
+        $('*').focus(function(){
             has_focus = true;
         }).blur(function() {
             has_focus = false;

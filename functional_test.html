@@ -9,11 +9,18 @@
             $('#search_input').cleverfocus({
                 keypress_limit: 3
             });
+            $('#another_input').focus();
         });
     </script>
 </head>
 <body>
-    <input type="text" id="search_input" value="" />
+    <input type="text" id="search_input" value="" /> &larr; The desired focus
     <p>Please enter something without setting focus to the input</p>
+    <br />
+    <input type="text" id="another_input" value="" />
+    <p>It's another input, you can put the focus here for the test</p>
+    <br />
+    <textarea id="another_textarea"></textarea>
+    <p>It's textarea, you can put the focus here for the test</p>
 </body>
 </html>
