@@ -1,10 +1,10 @@
 /**
- * Autofocus plugin
+ * Cleverfocus plugin
  * Set the focus to the desired form element when text is entered without a focus
  * Copyright (c) 2012 Mikhail Andreev (adw0rd.ru)
  */
 (function($) {
-    $.fn.autofocus = function(options) {
+    $.fn.cleverfocus = function(options) {
         var defaults = {
             keypress_limit: 0
         }
