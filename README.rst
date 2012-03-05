@@ -2,6 +2,8 @@ jquery-cleverfocus
 =======================
 Set the focus to the desired form element when text is entered without a focus
 
+Demo page: http://demo.adw0rd.ru/jquery-cleverfocus/functional_test.html
+
 ------------
 How to use
 ------------
