@@ -13,9 +13,9 @@
         var has_focus = false;
         var input = $(this);
 
-        $('input, textarea, button, select').focusin(function() {
+        $('input, textarea, button, select').live('focusin', function() {
             has_focus = true;
-        }).focusout(function() {
+        }).live('focusout', function() {
             has_focus = false;
         });
 
