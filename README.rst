@@ -1,22 +1,21 @@
 jquery-cleverfocus
 =======================
-Set the focus to the desired form element when text is entered without a focus
+Set the focus to the desired form element when text is entered without a focus.
 
-Demo page: http://demo.adw0rd.ru/jquery-cleverfocus/functional_test.html
+Demo page: http://demo.adw0rd.com/jquery-cleverfocus/functional_test.html
 
-------------
 How to use
 ------------
 
-Example html:
+Example html::
 
- <input id="search_input" />
+    <input id="search_input" />
 
-Example javascript:
+Example javascript::
 
- $("#search_input").cleverfocus({
-     keypress_limit: 3
- });
+    $("#search_input").cleverfocus({
+        keypress_limit: 3
+    });
 
-When you reach ``keypress_limit``, then it will set the focus to the desired ``input`` and ``input`` will fill the data which you entered
+When you reach ``keypress_limit``, then it will set the focus to the desired ``input`` and ``input`` will fill the data which you entered.
 
