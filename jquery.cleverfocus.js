@@ -46,7 +46,8 @@ if (!Array.indexOf) {
                 if ([BACKSPACE, DELETE, END, HOME, LEFT, RIGHT].indexOf(button.keyCode) != -1) {
                     // Handling special buttons
                     if (button.keyCode == BACKSPACE) {
-                        keypress_words.pop();
+                        current_position_in_keypress_words--;
+                        keypress_words.splice(current_position_in_keypress_words, 1);
                     }
                     if (current_position_in_keypress_words && button.keyCode == DELETE) {
                         keypress_words.splice(current_position_in_keypress_words, 1);
