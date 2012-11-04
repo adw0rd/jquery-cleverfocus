@@ -10,8 +10,16 @@
         }
         var options = $.extend(defaults, options);
         var keypress_words = [];
+        var current_position_in_keypress_words = 0;
         var has_focus = false;
         var input = $(this);
+
+        var BACKSPACE = 8;
+        var DELETE = 46;
+        var END = 35;
+        var HOME = 36;
+        var LEFT = 37;
+        var RIGHT = 39;
 
         $('input, textarea, button, select').live('focusin', function() {
             has_focus = true;
@@ -21,10 +29,30 @@
 
         $(document).keypress(function(button) {
             if (!has_focus) {
-                if (button.which != 0 && !button.ctrlKey && !button.altKey) {
-                    var ch = String.fromCharCode(button.which);
-                    keypress_words.push(ch);
+                if ([BACKSPACE, DELETE, END, HOME, LEFT, RIGHT].indexOf(button.keyCode) != -1) {
+                    if (button.keyCode == BACKSPACE) {
+                        keypress_words.pop();
+                    }
+                    if (current_position_in_keypress_words && button.keyCode == DELETE) {
+                        keypress_words.splice(current_position_in_keypress_words, 1);
+                    }
+                    if (button.keyCode == END) {
+                        current_position_in_keypress_words = keypress_words.length;
+                    }
+                    if (button.keyCode == HOME) {
+                        current_position_in_keypress_words = 0;
+                    }
+                    if (button.keyCode == LEFT && current_position_in_keypress_words != 0) {
+                        current_position_in_keypress_words--;
+                    }
+                    if (button.keyCode == RIGHT && current_position_in_keypress_words != keypress_words.length) {
+                        current_position_in_keypress_words++;
+                    }
+                } else if (button.which != 0 && !button.ctrlKey && !button.altKey) {
+                    keypress_words.splice(current_position_in_keypress_words, 0, String.fromCharCode(button.which));
+                    current_position_in_keypress_words++;
                 }
+
                 if (keypress_words.length >= options.keypress_limit) {
                     if (jQuery.browser.webkit || jQuery.browser.opera) {
                         keypress_words.pop();
@@ -33,6 +61,7 @@
                     keypress_words = [];
                 }
             }
+            // console.log(current_position_in_keypress_words, keypress_words)
         });
     }
 }(jQuery));
