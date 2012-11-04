@@ -1,7 +1,7 @@
 /**
  * Cleverfocus plugin
  * Set the focus to the desired form element when text is entered without a focus
- * Copyright (c) 2012 Mikhail Andreev (adw0rd.ru)
+ * Copyright (c) 2012 Mikhail Andreev (http://adw0rd.com/)
  */
 (function($) {
     $.fn.cleverfocus = function(options) {
@@ -14,6 +14,7 @@
         var has_focus = false;
         var input = $(this);
 
+        // Special buttons
         var BACKSPACE = 8;
         var DELETE = 46;
         var END = 35;
@@ -30,6 +31,7 @@
         $(document).keypress(function(button) {
             if (!has_focus) {
                 if ([BACKSPACE, DELETE, END, HOME, LEFT, RIGHT].indexOf(button.keyCode) != -1) {
+                    // Handling special buttons
                     if (button.keyCode == BACKSPACE) {
                         keypress_words.pop();
                     }
@@ -49,19 +51,20 @@
                         current_position_in_keypress_words++;
                     }
                 } else if (button.which != 0 && !button.ctrlKey && !button.altKey) {
+                    // Write a symbol
                     keypress_words.splice(current_position_in_keypress_words, 0, String.fromCharCode(button.which));
                     current_position_in_keypress_words++;
                 }
-
                 if (keypress_words.length >= options.keypress_limit) {
+                    // Put a symbols to specified input
                     if (jQuery.browser.webkit || jQuery.browser.opera) {
                         keypress_words.pop();
                     }
                     input.focus().val(input.val() + keypress_words.join(''));
                     keypress_words = [];
                 }
+                // console.log(current_position_in_keypress_words, keypress_words)
             }
-            // console.log(current_position_in_keypress_words, keypress_words)
         });
     }
 }(jQuery));
