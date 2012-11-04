@@ -3,6 +3,19 @@
  * Set the focus to the desired form element when text is entered without a focus
  * Copyright (c) 2012 Mikhail Andreev (http://adw0rd.com/)
  */
+
+if (!Array.indexOf) {
+    // Implementation indexOf for IE
+    Array.prototype.indexOf = function(obj) {
+        for (var i=0; i<this.length; i++) {
+            if (this[i] == obj){
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
 (function($) {
     $.fn.cleverfocus = function(options) {
         var defaults = {
@@ -57,7 +70,7 @@
                 }
                 if (keypress_words.length >= options.keypress_limit) {
                     // Put a symbols to specified input
-                    if (jQuery.browser.webkit || jQuery.browser.opera) {
+                    if (jQuery.browser.webkit || jQuery.browser.opera || jQuery.browser.msie) {
                         keypress_words.pop();
                     }
                     input.focus().val(input.val() + keypress_words.join(''));
