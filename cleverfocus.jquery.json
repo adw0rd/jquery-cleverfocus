@@ -4,7 +4,8 @@
     "description": "Set the focus to the desired form element when text is entered without a focus.",
     "keywords": [
         "cleverfocus",
-        "focus"
+        "focus",
+        "input"
     ],
     "version": "0.2.1",
     "author": {
