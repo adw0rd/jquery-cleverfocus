@@ -20,6 +20,7 @@
     "bugs": "https://github.com/adw0rd/jquery-cleverfocus/issues",
     "homepage": "https://github.com/adw0rd/jquery-cleverfocus",
     "docs": "http://adw0rd.com/2012/03/01/jquery-cleverfocus/en/",
+    "demo": "http://adw0rd.github.com/jquery-cleverfocus/",
     "download": "https://github.com/adw0rd/jquery-cleverfocus/tags",
     "dependencies": {
         "jquery": ">=1.7.1"
