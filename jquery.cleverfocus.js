@@ -41,7 +41,7 @@ if (!Array.indexOf) {
             has_focus = false;
         });
 
-        $(document).keypress(function(button) {
+        $(document).keydown(function(button) {
             if (!has_focus) {
                 if ([BACKSPACE, DELETE, END, HOME, LEFT, RIGHT].indexOf(button.keyCode) != -1) {
                     // Handling special buttons
@@ -64,7 +64,12 @@ if (!Array.indexOf) {
                     if (button.keyCode == RIGHT && current_position_in_keypress_words != keypress_words.length) {
                         current_position_in_keypress_words++;
                     }
-                } else if (button.which != 0 && !button.ctrlKey && !button.altKey) {
+                }
+            }
+        });
+        $(document).keypress(function(button) {
+            if (!has_focus) {
+                if (button.which != 0 && !button.ctrlKey && !button.altKey) {
                     // Write a symbol
                     keypress_words.splice(current_position_in_keypress_words, 0, String.fromCharCode(button.which));
                     current_position_in_keypress_words++;
